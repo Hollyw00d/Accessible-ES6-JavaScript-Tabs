@@ -1,0 +1,28 @@
+.wrapper {
+  max-width: 800px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.tabs-selectors {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.tabs-selectors > li {
+  width: 150px;
+}
+
+.tabs-selectors > .active {
+  border: 1px solid #f00;
+}
+
+.tabs-contents > div {
+  height: 150px;
+  border: 1px solid #000;
+  display: none;
+}
+
+.tabs-contents > .active {
+  display: block;
+}
