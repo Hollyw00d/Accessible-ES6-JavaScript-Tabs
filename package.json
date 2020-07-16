@@ -1,0 +1,19 @@
+{
+  "name": "accessible-es6-javascript-tabs",
+  "version": "1.0.0",
+  "description": "Also see my CodePen.io link at https://codepen.io/hollyw00d/pen/PoPramM for a quick view of HTML, CSS, and JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hollyw00d/Accessible-ES6-JavaScript-Tabs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hollyw00d/Accessible-ES6-JavaScript-Tabs/issues"
+  },
+  "homepage": "https://github.com/Hollyw00d/Accessible-ES6-JavaScript-Tabs#readme"
+}
