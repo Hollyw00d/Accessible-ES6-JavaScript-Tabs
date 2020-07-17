@@ -9,10 +9,6 @@
   padding-left: 0;
 }
 
-.tabs-selectors > li {
-  width: 150px;
-}
-
 .tabs-selectors > .active {
   border: 1px solid #f00;
 }
