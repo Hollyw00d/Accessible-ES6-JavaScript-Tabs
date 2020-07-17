@@ -16,7 +16,6 @@
 
         for( let i = 0; i < tabsSelectorsFromClicked.length; i++ ) {
           if( tabsSelectorClicked.getAttribute('data-id') === tabsContentsFromClicked[i].getAttribute('data-id') ) {
-            console.log('length - 1: ' + tabsSelectorsFromClicked.length - 1);
             tabsSelectorsFromClicked[i].classList.add('active');
             tabsSelectorsFromClicked[i].setAttribute('aria-pressed', 'true');
             tabsSelectorsFromClicked[i].setAttribute('tabindex', '0');   
