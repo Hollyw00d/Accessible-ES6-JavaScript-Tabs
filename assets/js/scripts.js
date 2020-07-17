@@ -7,56 +7,56 @@
     const largeRandNum = Math.floor( ( Math.random() * 1000 ) + 1000 );
 
     const tabsSelectorsOnClick = e => {
-    const tabsSelectorClicked = e.target;
+      const tabsSelectorClicked = e.target;
 
       if(!tabsSelectorClicked.classList.contains('active')) {
         const tabsContainerFromClicked = tabsSelectorClicked.closest('.tabs-container');
         const tabsSelectorsFromClicked = tabsContainerFromClicked.querySelectorAll('.tabs-selectors > li');
         const tabsContentsFromClicked = tabsContainerFromClicked.querySelectorAll('.tabs-contents > div');  
 
-        tabsSelectorsFromClicked.forEach((singleTabsSelectors, i) => {
+        for( let i = 0; i < tabsSelectorsFromClicked.length; i++ ) {
           if( tabsSelectorClicked.getAttribute('data-id') === tabsContentsFromClicked[i].getAttribute('data-id') ) {
-            singleTabsSelectors.classList.add('active');
-            singleTabsSelectors.setAttribute('aria-pressed', 'true');
-            singleTabsSelectors.setAttribute('tabindex', '0');   
+            console.log('length - 1: ' + tabsSelectorsFromClicked.length - 1);
+            tabsSelectorsFromClicked[i].classList.add('active');
+            tabsSelectorsFromClicked[i].setAttribute('aria-pressed', 'true');
+            tabsSelectorsFromClicked[i].setAttribute('tabindex', '0');   
 
             tabsContentsFromClicked[i].classList.add('active');
           } else {
-            singleTabsSelectors.classList.remove('active');
-            singleTabsSelectors.setAttribute('aria-pressed', 'false');
-            singleTabsSelectors.setAttribute('tabindex', '-1');   
+            tabsSelectorsFromClicked[i].classList.remove('active');
+            tabsSelectorsFromClicked[i].setAttribute('aria-pressed', 'false');
+            tabsSelectorsFromClicked[i].setAttribute('tabindex', '-1');   
 
             tabsContentsFromClicked[i].classList.remove('active');
           }
-        });
-
+        }
       }
 
     };
 
-    tabsSelectors.forEach((singleTabsSelectors, i) => {
+    for( let i = 0; i < tabsSelectors.length; i++ ) {      
       const tabsSelectorsId = 'tab-selector-' + largeRandNum + '-' + i;
       const tabsContentsId = 'tab-content-' + largeRandNum + '-' + i;
 
-      singleTabsSelectors.setAttribute('data-id', i);
-      singleTabsSelectors.setAttribute('id', tabsSelectorsId);    
-      singleTabsSelectors.setAttribute('aria-controls', tabsContentsId);    
+      tabsSelectors[i].setAttribute('data-id', i);
+      tabsSelectors[i].setAttribute('id', tabsSelectorsId);    
+      tabsSelectors[i].setAttribute('aria-controls', tabsContentsId);    
 
       tabsContents[i].setAttribute('data-id', i);
       tabsContents[i].setAttribute('id', tabsContentsId);    
       tabsContents[i].setAttribute('aria-labelledby', tabsSelectorsId);    
 
       if(i === 0 || i % (tabsSelectors.length / tabsContainer.length) === 0 ) {
-         singleTabsSelectors.setAttribute('aria-pressed', 'true');
-         singleTabsSelectors.setAttribute('tabindex', '0');
+         tabsSelectors[i].setAttribute('aria-pressed', 'true');
+         tabsSelectors[i].setAttribute('tabindex', '0');
       } else {
-         singleTabsSelectors.setAttribute('aria-pressed', 'false');
-         singleTabsSelectors.setAttribute('tabindex', '-1');
+         tabsSelectors[i].setAttribute('aria-pressed', 'false');
+         tabsSelectors[i].setAttribute('tabindex', '-1');
       }
 
-      singleTabsSelectors.addEventListener('click', tabsSelectorsOnClick);
-    }); 
-  
+      tabsSelectors[i].addEventListener('click', tabsSelectorsOnClick);      
+    }
+    
   };
 
   window.addEventListener('load', () => {
