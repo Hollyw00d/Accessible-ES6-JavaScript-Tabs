@@ -10,7 +10,7 @@
       const tabsSelectorClicked = e.target;
 
       if(!tabsSelectorClicked.classList.contains('active')) {
-        const tabsContainerFromClicked = tabsSelectorClicked.closest('.tabs-container');
+        const tabsContainerFromClicked = tabsSelectorClicked.parentNode.parentNode;
         const tabsSelectorsFromClicked = tabsContainerFromClicked.querySelectorAll('.tabs-selectors > li');
         const tabsContentsFromClicked = tabsContainerFromClicked.querySelectorAll('.tabs-contents > div');  
 
