@@ -9,12 +9,17 @@
   padding-left: 0;
 }
 
+.tabs-selectors > li {
+  padding: 5px;
+}
+
 .tabs-selectors > .active {
   border: 1px solid #f00;
 }
 
 .tabs-contents > div {
-  height: 150px;
+  height: 100px;
+  padding: 5px;
   border: 1px solid #000;
   display: none;
 }
