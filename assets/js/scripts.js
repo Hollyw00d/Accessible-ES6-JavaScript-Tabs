@@ -3,9 +3,10 @@
 // inside it
 (() => {
   const tabs = () => {
+    // Assign .tabs-wrapper elements to a variable
+    // to iterate through them in a for loop below,
+    // and child elements of them through a nested for loop
     const tabsWrapper = document.querySelectorAll('.tabs-wrapper');
-    const tabsSelectors = document.querySelectorAll('.tabs-selectors > li');
-    const tabsContents = document.querySelectorAll('.tabs-contents > div');
 
     /*
     Assign largeRandNum variable to random value 
@@ -108,7 +109,6 @@
     for( let i = 0; i < tabsWrapper.length; i++ ) {
       const tabsSelectorsFromParent = tabsWrapper[i].querySelectorAll('.tabs-selectors > li');
       const tabsContentsFromParent = tabsWrapper[i].querySelectorAll('.tabs-contents > div');
-      
       
       // Iterate through the tabs selectors children
       // of their parent tabs wrapper element (.tabs-wrapper)
