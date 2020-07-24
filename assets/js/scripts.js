@@ -84,12 +84,14 @@
           */
           if( tabsSelectorClicked.getAttribute('data-id') === tabsContentsFromClicked[i].getAttribute('data-id') ) {
             tabsSelectorsFromClicked[i].classList.add('active');
+            tabsSelectorsFromClicked[i].setAttribute('aria-selected', 'true');
             tabsSelectorsFromClicked[i].setAttribute('aria-pressed', 'true');
             tabsSelectorsFromClicked[i].setAttribute('tabindex', '0');   
 
             tabsContentsFromClicked[i].classList.add('active');
           } else {
             tabsSelectorsFromClicked[i].classList.remove('active');
+            tabsSelectorsFromClicked[i].setAttribute('aria-selected', 'false');
             tabsSelectorsFromClicked[i].setAttribute('aria-pressed', 'false');
             tabsSelectorsFromClicked[i].setAttribute('tabindex', '-1');   
 
@@ -145,9 +147,11 @@
         tabindex -1 to remove focus from the rest of the tabs selectors that aren't first
         */
         if( j === 0 ) {
+           tabsSelectorsFromParent[i].setAttribute('aria-selected', 'true');
            tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'true');
            tabsSelectorsFromParent[j].setAttribute('tabindex', '0');
         } else {
+           tabsSelectorsFromParent[i].setAttribute('aria-selected', 'true');
            tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'false');
            tabsSelectorsFromParent[j].setAttribute('tabindex', '-1');
         }
