@@ -147,11 +147,11 @@
         tabindex -1 to remove focus from the rest of the tabs selectors that aren't first
         */
         if( j === 0 ) {
-           tabsSelectorsFromParent[i].setAttribute('aria-selected', 'true');
+           tabsSelectorsFromParent[j].setAttribute('aria-selected', 'true');
            tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'true');
            tabsSelectorsFromParent[j].setAttribute('tabindex', '0');
         } else {
-           tabsSelectorsFromParent[i].setAttribute('aria-selected', 'false');
+           tabsSelectorsFromParent[j].setAttribute('aria-selected', 'false');
            tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'false');
            tabsSelectorsFromParent[j].setAttribute('tabindex', '-1');
         }
