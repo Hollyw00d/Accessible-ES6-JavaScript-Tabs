@@ -151,7 +151,7 @@
            tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'true');
            tabsSelectorsFromParent[j].setAttribute('tabindex', '0');
         } else {
-           tabsSelectorsFromParent[i].setAttribute('aria-selected', 'true');
+           tabsSelectorsFromParent[i].setAttribute('aria-selected', 'false');
            tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'false');
            tabsSelectorsFromParent[j].setAttribute('tabindex', '-1');
         }
