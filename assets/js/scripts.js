@@ -147,15 +147,15 @@
         tabindex -1 to remove focus from the rest of the tabs selectors that aren't first
         */
         if( j === 0 ) {
-           tabsSelectorsFromParent[j].setAttribute('aria-selected', 'true');
-           tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'true');
-           tabsSelectorsFromParent[j].setAttribute('tabindex', '0');
+          tabsSelectorsFromParent[j].setAttribute('aria-selected', 'true');
+          tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'true');
+          tabsSelectorsFromParent[j].setAttribute('tabindex', '0');
         } else {
-           tabsSelectorsFromParent[j].setAttribute('aria-selected', 'false');
-           tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'false');
-           tabsSelectorsFromParent[j].setAttribute('tabindex', '-1');
+          tabsSelectorsFromParent[j].setAttribute('aria-selected', 'false');
+          tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'false');
+          tabsSelectorsFromParent[j].setAttribute('tabindex', '-1');
         }
-       
+        
         // Add an event lister to each child tabs selector (of it's tabs wrapper)
         // and pass in a function to make the tabs change on click in most cases.
         tabsSelectorsFromParent[j].addEventListener('click', tabsSelectorsOnClick);
