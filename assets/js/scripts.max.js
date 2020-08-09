@@ -8,9 +8,9 @@
 
     function closest(elem, selector) {
       try {
-        var ua = window.navigator.userAgent;
-        var old_ie = ua.indexOf('MSIE ');
-        var new_ie = ua.indexOf('Trident/');
+        const ua = window.navigator.userAgent;
+        const old_ie = ua.indexOf('MSIE ');
+        const new_ie = ua.indexOf('Trident/');
 
         if (old_ie > -1 || new_ie > -1) {
           if (elem.msMatchesSelector(selector)) {
