@@ -65,7 +65,8 @@
 
         elem.parentNode;
           
-        while(!elem.matches(selector)) {
+        //while(!elem.matches(selector)) {
+        while((typeof elem.matches(selector) === 'boolean' && !elem.matches(selector)) || (typeof elem.msMatchesSelector(selector) === 'boolean' && !elem.msMatchesSelector(selector))) {
           elem = elem.parentNode;
         }
         return elem;
