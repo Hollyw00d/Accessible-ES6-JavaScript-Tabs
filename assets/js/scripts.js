@@ -83,9 +83,8 @@
         //   return elem;
         // }  
 
-        console.log(elem.matches(selector) );
         
-        if( typeof elem.matches(selector) !== null || typeof elem.matches(selector) !== 'undefined'  ){
+        if( typeof elem.matches(selector) !== 'null' || typeof elem.matches(selector) !== 'undefined'  ){
           if(elem.matches(selector)) {
             return elem;
           }
@@ -95,7 +94,7 @@
             elem = elem.parentNode;
           }
           return elem;
-        } else if( typeof elem.msMatchesSelector(selector) !== null || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
+        } else if( typeof elem.msMatchesSelector(selector) !== 'null' || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
           if(elem.msMatchesSelector(selector)) {
             return elem;
           }
