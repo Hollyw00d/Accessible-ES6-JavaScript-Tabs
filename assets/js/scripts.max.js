@@ -10,7 +10,7 @@
       try {
         console.log(elem.msMatchesSelector(selector));
 
-        if (typeof elem.msMatchesSelector(selector) !== 'undefined') {
+        if (typeof elem.msMatchesSelector(selector) !== null) {
           if (elem.msMatchesSelector(selector)) {
             return elem;
           }
@@ -24,7 +24,7 @@
           return elem;
         }
 
-        if (typeof elem.matches(selector) !== 'undefined') {
+        if (typeof elem.matches(selector) !== null) {
           if (elem.matches(selector)) {
             return elem;
           }
