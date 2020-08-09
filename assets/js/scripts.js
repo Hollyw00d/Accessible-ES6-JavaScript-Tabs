@@ -71,8 +71,6 @@
         //   return elem;
         // } else 
 
-        console.log(elem.msMatchesSelector(selector));
-
         // if( typeof elem.msMatchesSelector(selector) !== null ) {
         //   if(elem.msMatchesSelector(selector)) {
         //     return elem;
@@ -85,7 +83,7 @@
         //   return elem;
         // }  
         
-        if( typeof elem.matches(selector) !== 'undefined'  ){
+        if( typeof elem.matches(selector) !== null || typeof elem.matches(selector) !== 'undefined'  ){
           if(elem.matches(selector)) {
             return elem;
           }
@@ -132,8 +130,6 @@
         function is defined above
         */
        const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
-        
-       console.log(tabsWrapperFromClicked);
 
        const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
        const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
