@@ -61,9 +61,10 @@
       try {
         if( typeof elem.matches(selector) !== 'undefined' && elem.matches(selector)  ) {
           return elem;
-        } else if( typeof elem.msMatchesSelector(selector) !== 'undefined' && elem.msMatchesSelector(selector) ) {
-
         } 
+        // else if( typeof elem.msMatchesSelector(selector) !== 'undefined' && elem.msMatchesSelector(selector) ) {
+        //   return elem;
+        // } 
 
         elem.parentNode;
 
