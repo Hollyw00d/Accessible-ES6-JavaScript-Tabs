@@ -63,21 +63,21 @@
         const blah = elem.msMatchesSelector(selector);
         console.log(typeof blah);
 
-        // if( typeof elem.msMatchesSelector(selector) !== 'null' || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
-        //   if(elem.msMatchesSelector(selector)) {
-        //     return elem;
-        //   }
-        //   elem.parentNode;
+        if( elem.msMatchesSelector(selector) !== null || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
+          if(elem.msMatchesSelector(selector)) {
+            return elem;
+          }
+          elem.parentNode;
   
-        //   while(!elem.msMatchesSelector(selector)) {
-        //     elem = elem.parentNode;
-        //   }
-        //   return elem;
-        // }
+          while(!elem.msMatchesSelector(selector)) {
+            elem = elem.parentNode;
+          }
+          return elem;
+        }
 
 
         
-        if( typeof elem.matches(selector) !== 'null' || typeof elem.matches(selector) !== 'undefined'  ){
+        if( elem.matches(selector) !== null || typeof elem.matches(selector) !== 'undefined'  ){
           if(elem.matches(selector)) {
             return elem;
           }
@@ -124,7 +124,7 @@
         function is defined above
         */
        const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
-       console.log(tabsWrapperFromClicked);
+       //console.log(tabsWrapperFromClicked);
 
        const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
        const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
