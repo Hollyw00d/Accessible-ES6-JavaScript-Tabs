@@ -59,17 +59,18 @@
     */
    function closest(elem, selector) {
       try {
-        if( typeof elem.matches(selector) !== 'undefined' ) {
-          if(elem.matches(selector)) {
-            return elem;
-          }
-          elem.parentNode;
+        // if( typeof elem.matches(selector) !== 'undefined' ) {
+        //   if(elem.matches(selector)) {
+        //     return elem;
+        //   }
+        //   elem.parentNode;
   
-          while(!elem.matches(selector)) {
-            elem = elem.parentNode;
-          }
-          return elem;
-        } else if( typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
+        //   while(!elem.matches(selector)) {
+        //     elem = elem.parentNode;
+        //   }
+        //   return elem;
+        // } else 
+        if( typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
           if(elem.msMatchesSelector(selector)) {
             return elem;
           }
