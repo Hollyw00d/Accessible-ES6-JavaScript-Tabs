@@ -64,7 +64,7 @@
          matchesSelector = elem.msMatchesSelector(selector);  
        } else {
          matchesSelector = elem.matches(selector);
-         console.log(matchesSelector);
+         console.log(elem.matches(selector));
        }
 
        if(matchesSelector) {
