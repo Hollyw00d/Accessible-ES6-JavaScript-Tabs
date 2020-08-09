@@ -11,9 +11,6 @@
     const tabsContents = document.querySelectorAll('.tabs-wrapper > .tabs-contents > div');
     
     const tabsSelectors2 = document.querySelector('.tabs-wrapper > .tabs-selectors > li');
-    console.log(tabsSelectors2.msMatchesSelector('.blah'));
-
-
 
     /*
     Assign largeRandNum variable to random value 
@@ -64,13 +61,20 @@
     */
     function closest(elem, selector) {
       try {
-       if(elem.matches(selector)) {
+       const matchesSelector; 
+       if(elem.msMatchesSelector(selector) === false || elem.msMatchesSelector(selector) === true) {
+        matchesSelector = elem.msMatchesSelector(selector);   
+       } else {
+         matchesSelector = elem.matches(selector);
+       }
+
+       if(matchesSelector) {
          return elem;
        } 
   
        elem.parentNode;
         
-       while(!elem.matches(selector)) {
+       while(!matchesSelector) {
          elem = elem.parentNode;
        }
        return elem;
@@ -108,9 +112,7 @@
         INSTEAD use a closest() function call, where the 
         function is defined above
         */
-        //const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
-        const tabsWrapperFromClicked = tabsSelectorClicked.parentNode.parentNode;
-
+        const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
         const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
         const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
         
