@@ -8,10 +8,8 @@
 
     function closest(elem, selector) {
       try {
-        switch (true) {
-          case elem.msMatchesSelector(selector):
-          case elem.matches(selector):
-            return elem;
+        if (typeof elem.matches(selector) !== 'undefined' && elem.matches(selector)) {
+          return elem;
         }
 
         elem.parentNode;
