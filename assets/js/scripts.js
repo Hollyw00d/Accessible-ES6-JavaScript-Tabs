@@ -59,20 +59,21 @@
     */
    function closest(elem, selector) {
       try {
+        const ua = window.navigator.userAgent;  
+        const old_ie = ua.indexOf('MSIE ');
+        const new_ie = ua.indexOf('Trident/');
 
-        // if( elem.msMatchesSelector(selector) !== null || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
-        //   if(elem.msMatchesSelector(selector)) {
-        //     return elem;
-        //   }
-        //   elem.parentNode;
+        if( (old_ie > -1) || (new_ie > -1)  ) {
+          if(elem.msMatchesSelector(selector)) {
+            return elem;
+          }
+          elem.parentNode;
   
-        //   while(!elem.msMatchesSelector(selector)) {
-        //     elem = elem.parentNode;
-        //   }
-        //   return elem;
-        // }
-
-
+          while(!elem.msMatchesSelector(selector)) {
+            elem = elem.parentNode;
+          }
+          return elem;
+        }
         
         if( elem.matches(selector) !== null || typeof elem.matches(selector) !== 'undefined'  ){
           if(elem.matches(selector)) {
