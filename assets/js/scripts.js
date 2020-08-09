@@ -61,8 +61,8 @@
     */
     function closest(elem, selector) {
       try {
-       const matchesSelector; 
-       if(elem.msMatchesSelector(selector) === false || elem.msMatchesSelector(selector) === true) {
+       let matchesSelector; 
+       if(typeof elem.msMatchesSelector(selector) === 'boolean') {
         matchesSelector = elem.msMatchesSelector(selector);   
        } else {
          matchesSelector = elem.matches(selector);
