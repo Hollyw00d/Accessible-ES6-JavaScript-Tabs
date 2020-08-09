@@ -57,30 +57,24 @@
     passed into the function call, like 'wrapper' 
     [notice the missing '.' for a class or '#' for an ID].
     */
-    function closest(elem, selector) {
+   function closest(elem, selector) {
       try {
-       let matchesSelector; 
-       if(elem.msMatchesSelector(selector) !== null) {
-         matchesSelector = elem.msMatchesSelector(selector);  
-       } else {
-         matchesSelector = elem.matches(selector);
-       }
+        if(elem.matches(selector)) {
+          return elem;
+        }  
 
-       if(matchesSelector) {
-         return elem;
-       } 
-  
-       elem.parentNode;
-        
-       while(!elem.matches(selector)) {
-         elem = elem.parentNode;
-       }
-       return elem;
-        
-       } catch(err) {
-         return null;
-       }     
+        elem.parentNode;
+          
+        while(!elem.matches(selector)) {
+          elem = elem.parentNode;
+        }
+        return elem;
+                
+      } catch(err) {
+        return null;
+      }     
     }
+  
     
     /*
     Assign tabsSelectorsOnClick to 
