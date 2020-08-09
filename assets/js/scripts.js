@@ -69,7 +69,9 @@
             elem = elem.parentNode;
           }
           return elem;
-        } 
+        } else if( typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
+
+        }
         
 
       } catch(err) {
