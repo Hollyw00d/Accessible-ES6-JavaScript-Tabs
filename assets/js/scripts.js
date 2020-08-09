@@ -59,14 +59,13 @@
     */
    function closest(elem, selector) {
       try {
-        if(typeof elem.msMatchesSelector(selector) === 'boolean' && elem.msMatchesSelector(selector)) {
+        if((typeof elem.msMatchesSelector(selector) !== 'defined' && elem.msMatchesSelector(selector)) || (typeof elem.matches(selector) !== 'defined' && elem.matches(selector))) {
           return elem;
         }  
 
         elem.parentNode;
-          
-        //while(!elem.matches(selector)) {
-        while(typeof elem.msMatchesSelector(selector) === 'boolean' && !elem.msMatchesSelector(selector)) {
+
+        while((typeof elem.msMatchesSelector(selector) !== 'undefined' && !elem.msMatchesSelector(selector)) || (typeof elem.matches(selector) !== 'undefined' && !elem.matches(selector))) {
           elem = elem.parentNode;
         }
         return elem;
