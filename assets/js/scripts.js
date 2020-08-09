@@ -9,6 +9,8 @@
     // through them later to provide HTML ARIA attributes for accessibility
     const tabsSelectors = document.querySelectorAll('.tabs-wrapper > .tabs-selectors > li');
     const tabsContents = document.querySelectorAll('.tabs-wrapper > .tabs-contents > div');
+    console.log(tabsContents.matches('.tabs-wrapper > .tabs-contents > div'));
+
 
     /*
     Assign largeRandNum variable to random value 
@@ -103,8 +105,9 @@
         INSTEAD use a closest() function call, where the 
         function is defined above
         */
-        const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
-        
+        //const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
+        const tabsWrapperFromClicked = tabsSelectorClicked.parentNode.parentNode;
+
         const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
         const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
         
