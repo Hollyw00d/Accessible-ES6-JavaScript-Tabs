@@ -124,6 +124,7 @@
         function is defined above
         */
        const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
+       console.log(tabsWrapperFromClicked);
 
        const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
        const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
