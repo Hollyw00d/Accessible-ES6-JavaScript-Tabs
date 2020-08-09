@@ -11,7 +11,7 @@
     const tabsContents = document.querySelectorAll('.tabs-wrapper > .tabs-contents > div');
     
     const tabsSelectors2 = document.querySelector('.tabs-wrapper > .tabs-selectors > li');
-    console.log(tabsSelectors2.matches('.blah'));
+    console.log(tabsSelectors2.msMatchesSelector('.blah'));
 
 
 
