@@ -9,7 +9,10 @@
     // through them later to provide HTML ARIA attributes for accessibility
     const tabsSelectors = document.querySelectorAll('.tabs-wrapper > .tabs-selectors > li');
     const tabsContents = document.querySelectorAll('.tabs-wrapper > .tabs-contents > div');
-    console.log(tabsContents.matches('.tabs-wrapper > .tabs-contents > div'));
+    
+    const tabsSelectors2 = document.querySelector('.tabs-wrapper > .tabs-selectors > li');
+    console.log(tabsSelectors2.matches('.blah'));
+
 
 
     /*
