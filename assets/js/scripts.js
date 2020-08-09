@@ -10,8 +10,6 @@
     const tabsSelectors = document.querySelectorAll('.tabs-wrapper > .tabs-selectors > li');
     const tabsContents = document.querySelectorAll('.tabs-wrapper > .tabs-contents > div');
     
-    const tabsSelectors2 = document.querySelector('.tabs-wrapper > .tabs-selectors > li');
-
     /*
     Assign largeRandNum variable to random value 
     between 1000 and 1999 (whole integer)
