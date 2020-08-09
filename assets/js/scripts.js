@@ -83,6 +83,17 @@
         //   return elem;
         // }  
 
+        if( typeof elem.msMatchesSelector(selector) !== 'null' || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
+          if(elem.msMatchesSelector(selector)) {
+            return elem;
+          }
+          elem.parentNode;
+  
+          while(!elem.msMatchesSelector(selector)) {
+            elem = elem.parentNode;
+          }
+          return elem;
+        }
         
         if( typeof elem.matches(selector) !== 'null' || typeof elem.matches(selector) !== 'undefined'  ){
           if(elem.matches(selector)) {
@@ -91,16 +102,6 @@
           elem.parentNode;
   
           while(!elem.matches(selector)) {
-            elem = elem.parentNode;
-          }
-          return elem;
-        } else if( typeof elem.msMatchesSelector(selector) !== 'null' || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
-          if(elem.msMatchesSelector(selector)) {
-            return elem;
-          }
-          elem.parentNode;
-  
-          while(!elem.msMatchesSelector(selector)) {
             elem = elem.parentNode;
           }
           return elem;
