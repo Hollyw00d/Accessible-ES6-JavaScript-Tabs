@@ -8,13 +8,13 @@
 
     function closest(elem, selector) {
       try {
-        if (typeof elem.matches(selector) === 'boolean' && elem.matches(selector) || typeof elem.msMatchesSelector(selector) === 'boolean' && elem.msMatchesSelector(selector)) {
+        if (typeof elem.msMatchesSelector(selector) === 'boolean' && elem.msMatchesSelector(selector)) {
           return elem;
         }
 
         elem.parentNode;
 
-        while (typeof elem.matches(selector) === 'boolean' && !elem.matches(selector) || typeof elem.msMatchesSelector(selector) === 'boolean' && !elem.msMatchesSelector(selector)) {
+        while (typeof elem.msMatchesSelector(selector) === 'boolean' && !elem.msMatchesSelector(selector)) {
           elem = elem.parentNode;
         }
 
