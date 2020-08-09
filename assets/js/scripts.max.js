@@ -38,7 +38,6 @@
 
       if (!tabsSelectorClicked.classList.contains('active')) {
         var tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper');
-        var tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
         var tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');
 
         for (var i = 0; i < tabsSelectorsFromClicked.length; i++) {
