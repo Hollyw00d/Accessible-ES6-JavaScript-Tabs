@@ -93,6 +93,8 @@
             elem = elem.parentNode;
           }
           return elem;
+        } else if( typeof elem.msMatchesSelector(selector) !== null ) {
+
         }
         
       } catch(err) {

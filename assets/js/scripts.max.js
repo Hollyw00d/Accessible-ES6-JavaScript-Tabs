@@ -8,9 +8,7 @@
 
     function closest(elem, selector) {
       try {
-        console.log(elem.msMatchesSelector(selector));
-
-        if (typeof elem.matches(selector) !== 'undefined') {
+        if (typeof elem.matches(selector) !== null || typeof elem.matches(selector) !== 'undefined') {
           if (elem.matches(selector)) {
             return elem;
           }
@@ -22,7 +20,7 @@
           }
 
           return elem;
-        }
+        } else if (typeof elem.msMatchesSelector(selector) !== null) {}
       } catch (err) {
         return null;
       }
@@ -33,7 +31,6 @@
 
       if (!tabsSelectorClicked.classList.contains('active')) {
         var tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper');
-        console.log(tabsWrapperFromClicked);
         var tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
         var tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');
 
