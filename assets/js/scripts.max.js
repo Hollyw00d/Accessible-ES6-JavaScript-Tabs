@@ -8,7 +8,7 @@
 
     function closest(elem, selector) {
       try {
-        if (elem.matches(selector)) {
+        if (typeof elem.matches(selector) === 'boolean' && elem.matches(selector) || typeof elem.msMatchesSelector(selector) === 'boolean' && elem.msMatchesSelector(selector)) {
           return elem;
         }
 
