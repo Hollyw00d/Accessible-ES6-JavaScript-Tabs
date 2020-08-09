@@ -20,7 +20,19 @@
           }
 
           return elem;
-        } else if (typeof elem.msMatchesSelector(selector) !== null) {}
+        } else if (typeof elem.msMatchesSelector(selector) !== null || typeof elem.msMatchesSelector(selector) !== 'undefined') {
+          if (elem.msMatchesSelector(selector)) {
+            return elem;
+          }
+
+          elem.parentNode;
+
+          while (!elem.msMatchesSelector(selector)) {
+            elem = elem.parentNode;
+          }
+
+          return elem;
+        }
       } catch (err) {
         return null;
       }
