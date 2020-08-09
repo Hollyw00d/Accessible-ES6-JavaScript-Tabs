@@ -60,6 +60,7 @@
     function closest(elem, selector) {
       try {
        let matchesSelector; 
+       console.log(elem.msMatchesSelector(selector));
        if(typeof elem.msMatchesSelector(selector) === 'boolean') {
          matchesSelector = elem.msMatchesSelector(selector);  
          console.log(matchesSelector); 
