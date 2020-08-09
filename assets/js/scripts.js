@@ -61,6 +61,9 @@
    function closest(elem, selector) {
       try {
 
+        const blah = elem.msMatchesSelector(selector);
+        console.log(typeof blah);
+
         // if( typeof elem.msMatchesSelector(selector) !== 'null' || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
         //   if(elem.msMatchesSelector(selector)) {
         //     return elem;
