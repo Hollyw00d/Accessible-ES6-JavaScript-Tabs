@@ -8,15 +8,7 @@
 
     function closest(elem, selector) {
       try {
-        var matchesSelector;
-
-        if (elem.msMatchesSelector(selector) !== null) {
-          matchesSelector = elem.msMatchesSelector(selector);
-        } else {
-          matchesSelector = elem.matches(selector);
-        }
-
-        if (matchesSelector) {
+        if (elem.matches(selector)) {
           return elem;
         }
 
