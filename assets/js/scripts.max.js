@@ -14,7 +14,6 @@
           matchesSelector = elem.msMatchesSelector(selector);
         } else {
           matchesSelector = elem.matches(selector);
-          console.log(elem.matches(selector));
         }
 
         if (matchesSelector) {
@@ -23,7 +22,7 @@
 
         elem.parentNode;
 
-        while (!matchesSelector) {
+        while (!elem.matches(selector)) {
           elem = elem.parentNode;
         }
 
