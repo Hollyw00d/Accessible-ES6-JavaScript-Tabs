@@ -8,7 +8,11 @@
 
     function closest(elem, selector) {
       try {
-        if (typeof elem.msMatchesSelector(selector) !== 'null' || typeof elem.msMatchesSelector(selector) !== 'undefined') {
+        var ua = window.navigator.userAgent;
+        var old_ie = ua.indexOf('MSIE ');
+        var new_ie = ua.indexOf('Trident/');
+
+        if (old_ie > -1 || new_ie > -1) {
           if (elem.msMatchesSelector(selector)) {
             return elem;
           }
@@ -22,7 +26,7 @@
           return elem;
         }
 
-        if (typeof elem.matches(selector) !== 'null' || typeof elem.matches(selector) !== 'undefined') {
+        if (elem.matches(selector) !== null || typeof elem.matches(selector) !== 'undefined') {
           if (elem.matches(selector)) {
             return elem;
           }
