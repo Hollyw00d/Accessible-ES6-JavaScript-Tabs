@@ -9,11 +9,9 @@
     function closest(elem, selector) {
       try {
         var matchesSelector;
-        console.log(elem.msMatchesSelector(selector));
 
-        if (typeof elem.msMatchesSelector(selector) === 'boolean') {
+        if (elem.msMatchesSelector(selector) !== null) {
           matchesSelector = elem.msMatchesSelector(selector);
-          console.log(matchesSelector);
         } else {
           matchesSelector = elem.matches(selector);
         }
