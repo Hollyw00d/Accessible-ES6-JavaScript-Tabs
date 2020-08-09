@@ -10,7 +10,7 @@
       try {
         console.log(elem.msMatchesSelector(selector));
 
-        if (typeof elem.matches(selector) !== null || typeof elem.matches(selector) !== 'undefined') {
+        if (typeof elem.matches(selector) !== 'undefined') {
           if (elem.matches(selector)) {
             return elem;
           }
