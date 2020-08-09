@@ -8,6 +8,8 @@
 
     function closest(elem, selector) {
       try {
+        console.log(elem.msMatchesSelector(selector));
+
         if (typeof elem.msMatchesSelector(selector) !== 'undefined') {
           if (elem.msMatchesSelector(selector)) {
             return elem;
@@ -20,7 +22,9 @@
           }
 
           return elem;
-        } else {
+        }
+
+        if (typeof elem.matches(selector) !== 'undefined') {
           if (elem.matches(selector)) {
             return elem;
           }

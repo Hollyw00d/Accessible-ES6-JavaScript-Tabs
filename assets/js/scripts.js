@@ -70,6 +70,9 @@
         //   }
         //   return elem;
         // } else 
+
+        console.log(elem.msMatchesSelector(selector));
+
         if( typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
           if(elem.msMatchesSelector(selector)) {
             return elem;
@@ -80,7 +83,9 @@
             elem = elem.parentNode;
           }
           return elem;
-        } else {
+        }  
+        
+        if( typeof elem.matches(selector) !== 'undefined'  ){
           if(elem.matches(selector)) {
             return elem;
           }
