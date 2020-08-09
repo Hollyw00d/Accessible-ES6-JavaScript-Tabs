@@ -111,9 +111,10 @@
         INSTEAD use a closest() function call, where the 
         function is defined above
         */
-        const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
-        const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
-        const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
+       const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
+        
+       const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
+       const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
         
         /*
         Use a for loop to iterate through all 
