@@ -20,7 +20,7 @@
           }
 
           return elem;
-        }
+        } else if (typeof elem.msMatchesSelector(selector) !== 'undefined') {}
       } catch (err) {
         return null;
       }
