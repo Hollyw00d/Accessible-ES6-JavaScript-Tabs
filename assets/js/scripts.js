@@ -3,10 +3,12 @@
 // inside it
 (() => {
   const tabs = () => {
-    // Assign .tabs-wrapper elements to a variable
-    // to iterate through them in a for loop below,
-    // and child elements of them through a nested for loop
-    const tabsWrapper = document.querySelectorAll('.tabs-wrapper');
+   
+    // Grab nodelists for tabsSelectors ('.tabs-wrapper > .tabs-selectors > li')
+    // and tabsContents (.tabs-wrapper > .tabs-contents > div') to iterate 
+    // through them later to provide HTML ARIA attributes for accessibility
+    const tabsSelectors = document.querySelectorAll('.tabs-wrapper > .tabs-selectors > li');
+    const tabsContents = document.querySelectorAll('.tabs-wrapper > .tabs-contents > div');
 
     /*
     Assign largeRandNum variable to random value 
@@ -15,6 +17,63 @@
     id, aria-controls, aria-labelledby HTML attribute values
     */
     const largeRandNum = Math.floor( ( Math.random() * 1000 ) + 1000 );
+
+    /*
+    1.
+    Pollyfill for IE10 and above
+    to use instead of elem.closest() 
+    which doesn't work in IE at all.
+    
+    2.
+    Inside try block:
+    a. 
+    If elem.matches(selector) is TRUE, for example
+    if the elem passed in has the same selector
+    as is passed in as arguments to the function,
+    then return the elem. There is no traversing up 
+    the DOM tree as this is the same behavior as .closest().
+    
+    b.
+    If elem.matches(selector) is false, 
+    elem is assigned to elem.parentNode
+    and then the while loop continues executing when
+    elem.matches(selector) [which returns a boolean] 
+    is FALSE and then elem is reassigned to elem.parentNode
+    and keeps on going up to next parent
+    elem.parentNode as the elem.matches(selector) is FALSE.
+     
+    b.
+    The while loop stops execution once
+    elem.matches(selector) is TRUE.
+    Then the elem is returned.
+    
+    3.
+    Inside catch block:
+    
+    a.
+    If there an any errors then the 
+    null is returned to avoid stopping execution
+    of the script. For example if an invalid element is
+    passed into the function call, like 'wrapper' 
+    [notice the missing '.' for a class or '#' for an ID].
+    */
+    function closest(elem, selector) {
+      try {
+       if(elem.matches(selector)) {
+         return elem;
+       } 
+  
+       elem.parentNode;
+        
+       while(!elem.matches(selector)) {
+         elem = elem.parentNode;
+       }
+       return elem;
+        
+       } catch(err) {
+         return null;
+       }     
+    }
     
     /*
     Assign tabsSelectorsOnClick to 
@@ -40,12 +99,15 @@
         Transverse from the 
         tab selector clicked (like "Tab 2" li tag), to ul.tabs-selectors,
         then eventually to div.tabs-wrapper.
-        AVOID using .closest() as IE doesn't suppose this method
+        AVOID using .closest() as IE doesn't suppose this method and
+        INSTEAD use a closest() function call, where the 
+        function is defined above
         */
-        const tabsWrapperFromClicked = tabsSelectorClicked.parentNode.parentNode;
+        const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
+        
         const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
         const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
-
+        
         /*
         Use a for loop to iterate through all 
         tabsSelectorsFromClicked elements
@@ -101,68 +163,59 @@
       }
 
     };
-    
-    /*
-    Iterate through all the tabs wrapper elements (.tabs-wrapper)
-    to eventually add attributes values to the 
-    child tabs selectors and child tabs contents 
-    (which are both assigned to variables)
-    */
-    for( let i = 0; i < tabsWrapper.length; i++ ) {
-      const tabsSelectorsFromParent = tabsWrapper[i].querySelectorAll('.tabs-selectors > li');
-      const tabsContentsFromParent = tabsWrapper[i].querySelectorAll('.tabs-contents > div');
-      
-      // Iterate through the tabs selectors children
-      // of their parent tabs wrapper element (.tabs-wrapper)
-      for( let j = 0; j < tabsSelectorsFromParent.length; j++ ) {
-     
-        // Create a unique string that will be used for 
-        // each tab selector id and aria-controls values and
-        // each tab content id and aria-labelledby values
-        const tabsSelectorsId = 'tab-selector-' + largeRandNum + '-' + j + '-' + i;
-        const tabsContentsId = 'tab-content-' + largeRandNum + '-' + j + '-' + i;
-        
-        /*
-        1.
-        Assign data-id attribute values to corresponding tabs selectors and
-        tabs contents
-        
-        2. Assign accessibility attributes to tabs selectors (aria-controls and id) 
-        and tabs contents (aria-labelledby and id)
-        */
-        tabsSelectorsFromParent[j].setAttribute('data-id', j);
-        tabsSelectorsFromParent[j].setAttribute('id', tabsSelectorsId);    
-        tabsSelectorsFromParent[j].setAttribute('aria-controls', tabsContentsId);    
+          
+ 
+    for( let i = 0; i < tabsSelectors.length; i++ ) {
 
-        tabsContentsFromParent[j].setAttribute('data-id', j);
-        tabsContentsFromParent[j].setAttribute('id', tabsContentsId);    
-        tabsContentsFromParent[j].setAttribute('aria-labelledby', tabsSelectorsId);  
+      // Create a unique string that will be used for 
+      // each tab selector id and aria-controls values and
+      // each tab content id and aria-labelledby values
+      const tabsSelectorsId = 'tab-selector-' + largeRandNum + '-' + i;
+      const tabsContentsId = 'tab-content-' + largeRandNum + '-' + i;
 
-        /*
-        IF the first tabs selector child then add
-        aria-pressed true (to show screen readers "Tab 1" is selected) and tabindex 0 
-        (to add focus),
-        ELSE add aria-pressed false 
-        (to show screen readers other tabs selectors besides "Tab 1" are selected) and
-        tabindex -1 to remove focus from the rest of the tabs selectors that aren't first
-        */
-        if( j === 0 ) {
-          tabsSelectorsFromParent[j].setAttribute('aria-selected', 'true');
-          tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'true');
-          tabsSelectorsFromParent[j].setAttribute('tabindex', '0');
-        } else {
-          tabsSelectorsFromParent[j].setAttribute('aria-selected', 'false');
-          tabsSelectorsFromParent[j].setAttribute('aria-pressed', 'false');
-          tabsSelectorsFromParent[j].setAttribute('tabindex', '-1');
-        }
-        
-        // Add an event lister to each child tabs selector (of it's tabs wrapper)
-        // and pass in a function to make the tabs change on click in most cases.
-        tabsSelectorsFromParent[j].addEventListener('click', tabsSelectorsOnClick);
-        
-      }  
-    }
-    
+      /*
+      1.
+      Assign data-id attribute values to corresponding tabs selectors and
+      tabs contents
+
+      2. 
+      Assign accessibility attributes to tabs selectors (aria-controls and id) 
+      and tabs contents (aria-labelledby and id)
+      */
+      tabsSelectors[i].setAttribute('data-id', i);
+      tabsSelectors[i].setAttribute('id', tabsSelectorsId);    
+      tabsSelectors[i].setAttribute('aria-controls', tabsContentsId);    
+
+      tabsContents[i].setAttribute('data-id', i);
+      tabsContents[i].setAttribute('id', tabsContentsId);    
+      tabsContents[i].setAttribute('aria-labelledby', tabsSelectorsId);  
+
+      /*
+      If the tabsSelectors[i] element is the first of a group
+      inside a '.tabs-selectors ' element [where there is not previousElement sibling]
+      then add
+      aria-pressed true (to show screen readers "Tab 1" is selected) 
+      and tabindex 0 (to add focus),
+      ELSE add aria-pressed false 
+      (to show screen readers other tabs selectors besides "Tab 1" are selected) and
+      tabindex -1 to remove focus from the rest of the tabs selectors that aren't first
+      */
+      if( tabsSelectors[i].previousElementSibling === null) {
+        tabsSelectors[i].setAttribute('aria-selected', 'true');
+        tabsSelectors[i].setAttribute('aria-pressed', 'true');
+        tabsSelectors[i].setAttribute('tabindex', '0');
+      } else {
+        tabsSelectors[i].setAttribute('aria-selected', 'false');
+        tabsSelectors[i].setAttribute('aria-pressed', 'false');
+        tabsSelectors[i].setAttribute('tabindex', '-1');
+      }
+
+      // Add an event lister to each child tabs selector (of it's tabs wrapper)
+      // and pass in a function to make the tabs change on click in most cases.
+      tabsSelectors[i].addEventListener('click', tabsSelectorsOnClick);
+
+    }  
+
   };
 
   /*
