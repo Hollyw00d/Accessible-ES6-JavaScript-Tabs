@@ -113,7 +113,9 @@
         */
        const tabsWrapperFromClicked = closest(tabsSelectorClicked, '.tabs-wrapper'); 
         
-       //const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
+       console.log(tabsWrapperFromClicked);
+
+       const tabsSelectorsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-selectors > li');
        const tabsContentsFromClicked = tabsWrapperFromClicked.querySelectorAll('.tabs-contents > div');  
         
         /*
