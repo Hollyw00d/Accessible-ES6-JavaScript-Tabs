@@ -10,6 +10,7 @@
     const tabsSelectors = document.querySelectorAll('.tabs-wrapper > .tabs-selectors > li');
     const tabsContents = document.querySelectorAll('.tabs-wrapper > .tabs-contents > div');
 
+    console.log(typeof document.querySelector('.tabs-wrapper > .tabs-contents > div').msMatchesSelector(selector));
     /*
     Assign largeRandNum variable to random value 
     between 1000 and 1999 (whole integer)
@@ -59,8 +60,6 @@
     */
    function closest(elem, selector) {
       try {
-     
-        console.log(elem.msMatchesSelector(selector));
 
         // if( typeof elem.msMatchesSelector(selector) !== 'null' || typeof elem.msMatchesSelector(selector) !== 'undefined' ) {
         //   if(elem.msMatchesSelector(selector)) {
