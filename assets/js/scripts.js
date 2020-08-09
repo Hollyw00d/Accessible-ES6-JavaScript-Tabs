@@ -59,7 +59,7 @@
     */
    function closest(elem, selector) {
       try {
-        if((typeof elem.msMatchesSelector(selector) !== 'defined' && elem.msMatchesSelector(selector)) || (typeof elem.matches(selector) !== 'defined' && elem.matches(selector))) {
+        if((typeof elem.msMatchesSelector(selector) !== 'undefined' && elem.msMatchesSelector(selector)) || (typeof elem.matches(selector) !== 'undefined' && elem.matches(selector))) {
           return elem;
         }  
 
