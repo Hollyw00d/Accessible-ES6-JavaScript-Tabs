@@ -80,6 +80,16 @@
             elem = elem.parentNode;
           }
           return elem;
+        } else {
+          if(elem.matches(selector)) {
+            return elem;
+          }
+          elem.parentNode;
+  
+          while(!elem.matches(selector)) {
+            elem = elem.parentNode;
+          }
+          return elem;
         }
         
       } catch(err) {
